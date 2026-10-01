@@ -1,0 +1,87 @@
+---
+layout: home
+title: Home
+---
+{% assign featured = site.posts | where: "featured", true | first | default: site.posts.first %}
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow">{{ site.brand }} · by {{ site.author_name }}, {{ site.author_title }}</p>
+      <h1 class="hero-title">The law, <em>explained plainly</em>.</h1>
+      <p class="hero-lede">Practical, jargon-free writing on the legal questions people actually face: renting a flat, writing a will, recovering money, or knowing your rights when something goes wrong.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="{{ '/blog/' | relative_url }}">Read the articles</a>
+        <a class="btn btn-ghost" href="{{ '/about/' | relative_url }}">About me</a>
+      </div>
+    </div>
+    {% if featured %}
+    <a class="featured" href="{{ featured.url | relative_url }}">
+      <span class="featured-label">Featured</span>
+      {% if featured.categories.size > 0 %}<span class="tag">{{ featured.categories | first }}</span>{% endif %}
+      <h2 class="featured-title">{{ featured.title }}</h2>
+      <p>{{ featured.description | default: featured.excerpt | strip_html | truncatewords: 28 }}</p>
+      <span class="read-more">Read article <span aria-hidden="true">→</span></span>
+      <svg class="featured-ornament" viewBox="0 0 120 120" aria-hidden="true"><path d="M60 14v86M30 100h60M60 24l-34 8M60 24l34 8M26 32l-14 34h28zM94 32l-14 34h28z"/><path d="M12 66a14 7 0 0 0 28 0M80 66a14 7 0 0 0 28 0"/></svg>
+    </a>
+    {% endif %}
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">What I write about</p>
+      <h2>Topics</h2>
+    </div>
+    <div class="topic-grid">
+      {% for t in site.data.topics %}
+      {% assign count = site.categories[t.name] | size %}
+      <a class="topic-card" href="{{ '/topics/' | relative_url }}#{{ t.name | slugify }}">
+        <span class="topic-num">{% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}</span>
+        <h3>{{ t.name }}</h3>
+        <p>{{ t.blurb }}</p>
+        <span class="topic-count">{% if count > 0 %}{{ count }} article{% if count != 1 %}s{% endif %}{% else %}Coming soon{% endif %}</span>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-head split">
+      <div>
+        <p class="eyebrow">Latest</p>
+        <h2>Recent writing</h2>
+      </div>
+      <a class="link-arrow" href="{{ '/blog/' | relative_url }}">All articles <span aria-hidden="true">→</span></a>
+    </div>
+    <div class="post-grid">
+      {% for post in site.posts limit: 6 %}
+        {% include post-card.html post=post %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container about-strip">
+    <div class="portrait" aria-hidden="true">
+      <img src="{{ '/assets/img/portrait.svg' | relative_url }}" alt="">
+    </div>
+    <div>
+      <p class="eyebrow">About</p>
+      <blockquote class="pull-quote">“Most legal problems get worse because people don’t know where they stand. A little clarity, early, changes everything.”</blockquote>
+      <p>I’m {{ site.author_name }}, an advocate based in {{ site.location }}. I started this blog to answer, in plain language, the questions friends, family and clients ask me every week.</p>
+      <a class="link-arrow" href="{{ '/about/' | relative_url }}">More about me <span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="section cta">
+  <div class="container narrow center">
+    <h2>Is there a topic you'd like explained?</h2>
+    <p>Suggest a question and I may write about it. Please don't send details of your own case. I can't give advice through this website.</p>
+    <a class="btn btn-primary" href="{{ '/contact/' | relative_url }}">Suggest a topic</a>
+  </div>
+</section>

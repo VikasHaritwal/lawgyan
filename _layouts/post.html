@@ -1,0 +1,60 @@
+---
+layout: default
+---
+{% assign words = content | number_of_words %}
+<div class="progress" aria-hidden="true"><span id="progress-bar"></span></div>
+<article class="post">
+  <header class="post-header">
+    <div class="container narrow">
+      <p class="post-meta-top">
+        {% if page.categories.size > 0 %}<a class="tag" href="{{ '/topics/' | relative_url }}#{{ page.categories | first | slugify }}">{{ page.categories | first }}</a>{% endif %}
+        <span>{{ words | divided_by: 200 | plus: 1 }} min read</span>
+      </p>
+      <h1 class="post-title">{{ page.title }}</h1>
+      {% if page.description %}<p class="lede">{{ page.description }}</p>{% endif %}
+      <div class="byline">
+        <span class="avatar" aria-hidden="true">{{ site.author_name | slice: 0 }}</span>
+        <div>
+          <p class="byline-name">{{ site.author_name }}</p>
+          <p class="byline-date">
+            <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%-d %B %Y" }}</time>
+            {% if page.updated %} · Updated <time datetime="{{ page.updated | date_to_xmlschema }}">{{ page.updated | date: "%-d %B %Y" }}</time>{% endif %}
+          </p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container narrow prose post-body">
+    {{ content }}
+  </div>
+
+  <div class="container narrow">
+    <aside class="note-box" aria-label="Disclaimer">
+      <p><strong>Please note:</strong> this article explains the law in general terms and is not legal advice for your situation. Laws and court decisions change, so speak to an advocate before acting on it.</p>
+    </aside>
+
+    <div class="share">
+      <span>Share this article</span>
+      <a href="https://wa.me/?text={{ page.title | append: ' ' | append: site.url | append: page.url | uri_escape }}" rel="noopener" target="_blank">WhatsApp</a>
+      <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ site.url | append: page.url | uri_escape }}" rel="noopener" target="_blank">LinkedIn</a>
+      <a href="https://x.com/intent/post?text={{ page.title | uri_escape }}&url={{ site.url | append: page.url | uri_escape }}" rel="noopener" target="_blank">X</a>
+      <button type="button" class="copy-link" data-url="{{ site.url | append: page.url }}">Copy link</button>
+    </div>
+
+    <nav class="post-nav" aria-label="More articles">
+      {% if page.previous %}
+      <a class="post-nav-item" href="{{ page.previous.url | relative_url }}">
+        <span class="post-nav-label">← Previous</span>
+        <span class="post-nav-title">{{ page.previous.title }}</span>
+      </a>
+      {% else %}<span></span>{% endif %}
+      {% if page.next %}
+      <a class="post-nav-item next" href="{{ page.next.url | relative_url }}">
+        <span class="post-nav-label">Next →</span>
+        <span class="post-nav-title">{{ page.next.title }}</span>
+      </a>
+      {% endif %}
+    </nav>
+  </div>
+</article>

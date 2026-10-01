@@ -1,0 +1,47 @@
+# ─────────────────────────────────────────────────────────────
+#  Site settings — edit these values, then save.
+# ─────────────────────────────────────────────────────────────
+title: "LawGyan"
+brand: "LawGyan"                      # Site name shown in the header and footer
+author_name: "Monika"                 # Full name as you want it shown, e.g. "Adv. Monika Sharma"
+author_title: "Advocate"
+tagline: "Law, explained plainly."
+description: >-
+  Clear, practical writing on Indian law: property, family, contracts and
+  everyday legal questions, by an advocate who believes the law should be
+  understandable by everyone.
+email: "hello@example.com"            # Your public email address
+location: "India"
+linkedin: ""                          # e.g. "https://www.linkedin.com/in/your-handle"
+twitter: ""                           # e.g. "your-handle" (without @)
+
+# Your domain. Leave baseurl empty.
+url: "https://lawgyan.co.in"
+baseurl: ""
+
+# ─────────────────────────────────────────────────────────────
+#  Technical settings — normally no need to change below here.
+# ─────────────────────────────────────────────────────────────
+lang: en-IN
+timezone: Asia/Kolkata
+permalink: /blog/:year/:title/
+markdown: kramdown
+kramdown:
+  input: GFM
+  auto_ids: true
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+feed:
+  path: feed.xml
+defaults:
+  - scope: { path: "", type: posts }
+    values: { layout: post }
+  - scope: { path: "" }
+    values: { layout: page }
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor

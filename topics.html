@@ -1,0 +1,38 @@
+---
+layout: default
+title: Topics
+permalink: /topics/
+description: Articles grouped by area of law.
+---
+<section class="page-hero">
+  <div class="container">
+    <p class="eyebrow">Browse</p>
+    <h1>Topics</h1>
+    <p class="lede">Articles grouped by area of law.</p>
+  </div>
+</section>
+<section class="section section-tight">
+  <div class="container topic-list">
+    {% for t in site.data.topics %}
+    {% assign posts = site.categories[t.name] %}
+    <div class="topic-block" id="{{ t.name | slugify }}">
+      <div class="topic-block-head">
+        <h2>{{ t.name }}</h2>
+        <p>{{ t.blurb }}</p>
+      </div>
+      {% if posts %}
+      <ul class="topic-posts">
+        {% for post in posts %}
+        <li>
+          <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %Y" }}</time>
+        </li>
+        {% endfor %}
+      </ul>
+      {% else %}
+      <p class="muted">Articles coming soon.</p>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </div>
+</section>

@@ -1,0 +1,29 @@
+---
+layout: default
+title: Writing
+permalink: /blog/
+description: All articles, newest first.
+---
+<section class="page-hero">
+  <div class="container">
+    <p class="eyebrow">The blog</p>
+    <h1>All writing</h1>
+    <p class="lede">Every article, newest first. Use the filters to see one subject.</p>
+    <div class="filters" role="group" aria-label="Filter by topic">
+      <button type="button" class="chip" data-filter="all" aria-pressed="true">All</button>
+      {% for t in site.data.topics %}{% if site.categories[t.name] %}
+      <button type="button" class="chip" data-filter="{{ t.name | slugify }}" aria-pressed="false">{{ t.name }}</button>
+      {% endif %}{% endfor %}
+    </div>
+  </div>
+</section>
+<section class="section section-tight">
+  <div class="container">
+    <div class="post-grid" id="post-list">
+      {% for post in site.posts %}
+        {% include post-card.html post=post %}
+      {% endfor %}
+    </div>
+    <p class="empty" id="empty" hidden>No articles in this topic yet.</p>
+  </div>
+</section>

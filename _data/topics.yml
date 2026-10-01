@@ -1,0 +1,14 @@
+# The subject areas shown on the home page and the Topics page.
+# A post appears under a topic when its `categories:` matches the `name` exactly.
+- name: Property & Tenancy
+  blurb: Buying, renting, registration, and disputes with landlords or builders.
+- name: Family & Succession
+  blurb: Marriage, divorce, maintenance, custody, wills and inheritance.
+- name: Money & Contracts
+  blurb: Agreements, cheque bounce, loans, recovery and small-business law.
+- name: Consumer Rights
+  blurb: Defective goods, bad service, insurance claims and consumer commissions.
+- name: Work & Employment
+  blurb: Appointment letters, notice periods, salary dues and workplace rights.
+- name: Your Rights
+  blurb: Police, FIRs, bail, RTI and how the courts actually work.
