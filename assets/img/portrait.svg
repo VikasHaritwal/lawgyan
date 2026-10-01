@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500">
+  <!-- Placeholder: replace with a real photo saved as assets/img/portrait.jpg and update the image path in index.html -->
+  <defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#efe6da"/><stop offset="1" stop-color="#e2d4c3"/></linearGradient></defs>
+  <rect width="400" height="500" fill="url(#g)"/>
+  <circle cx="200" cy="190" r="72" fill="#cdb9a2"/>
+  <path d="M60 500c0-96 63-160 140-160s140 64 140 160z" fill="#cdb9a2"/>
+  <text x="200" y="470" text-anchor="middle" font-family="Georgia, serif" font-size="18" fill="#7a2e3a" opacity=".7">Your photo here</text>
+</svg>
