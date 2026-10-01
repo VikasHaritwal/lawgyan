@@ -40,8 +40,11 @@ defaults:
     values: { layout: post }
   - scope: { path: "" }
     values: { layout: page }
+include:
+  - .htaccess
 exclude:
   - README.md
   - Gemfile
   - Gemfile.lock
+  - .github
   - vendor
